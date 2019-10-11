@@ -66,13 +66,19 @@ In addition, we choose to put **two current measurement channels** so we should 
 
 Of course, the eletronical environnement is designed for a bug free use (I2C pull-up , decoupling resistors, voltage regulation, etc..)
 
+The board B.O.M and the GERBER files could be found [HERE](https://github.com/ProjSante/Device/tree/master/Prototype/KiCAD-Files-SensorBoard)
+
 The simplified board architecture could be displayed as :
 
 ![SPB_Arch](https://tof.cx/images/2019/10/11/435c2b7e5b95a3bc33b57376aa90a550.png)
 
 #### SPB PinOut
 
+![SPB_Pinout](https://tof.cx/images/2019/10/11/cf41bafe9fde8d505ec1f96dae9f8209.png)
 
+> /!\ The input voltage should be 3.3v if you just want to use the Red and the Ir LED; 5v if you want to use the Red, the IR and the Green LED
+
+> **Current measurement : Current_Analog or Current_Digital (in Volts) / 2000 =** ***Real Current*** (ex: 1V == 0.5mA)
 
 To avoid ESB hazards, a protection could be put over the board thanks to the 4 fixation holes :
 
