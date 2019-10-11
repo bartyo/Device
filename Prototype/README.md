@@ -2,6 +2,14 @@
 
 This folder contains the files and studies that have been made to build a prototype design of the wearable device.
 
+1. Follow.ER Goals
+2. Global Architecture
+3. Device Architecture
+4. Device Prototype Goals
+5. Elements
+ 5.1 The MCU
+ 5.2 The Sensors HUB
+
 ## Follow.ER Goals
 
  Follow.ER is a project that wants to build an easy patients-monitoring system for the ER thanks to wearable devices following thoses rules :
@@ -64,7 +72,7 @@ The simplified board architecture could be displayed as :
 
 #### SPB PinOut
 
-The borad pinout :
+The board pinout :
 
 
 
@@ -73,3 +81,7 @@ To avoid ESB hazards, a protection could be put over the board thanks to the 4 f
 ![Shield](https://tof.cx/images/2019/10/11/5aa6f919fd9bc5461db9d073169f5693.png)
 
 #### I2C methods
+
+|**Function**|ToSend|Returns|
+|:------:|:----:|:-----:|
+|        |      |       |
