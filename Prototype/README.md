@@ -76,9 +76,9 @@ The simplified board architecture could be displayed as :
 
 ![SPB_Pinout](https://tof.cx/images/2019/10/11/cf41bafe9fde8d505ec1f96dae9f8209.png)
 
-> /!\ The input voltage should be 3.3v if you just want to use the Red and the Ir LED; 5v if you want to use the Red, the IR and the Green LED
+> /!\ The input voltage should be 3.3v if you just want to use the Red and the IR LED; 5v if you want to use the Red, the IR and the Green LED
 
-> **Current measurement : Current_Analog or Current_Digital (in Volts) / 2000 =** ***Real Current*** (ex: 1V == 0.5mA)
+> Current measurement : Current_Analog or Current_Digital (in Volts) / 2000 =** ***Real Current*** (ex: 1V == 0.5mA)
 
 To avoid ESB hazards, a protection could be put over the board thanks to the 4 fixation holes :
 
