@@ -62,10 +62,14 @@ The simplified board architecture could be displayed as :
 
 ![SPB_Arch](https://tof.cx/images/2019/10/11/435c2b7e5b95a3bc33b57376aa90a550.png)
 
+#### SPB PinOut
+
+The borad pinout :
+
+
+
 To avoid ESB hazards, a protection could be put over the board thanks to the 4 fixation holes :
 
 ![Shield](https://tof.cx/images/2019/10/11/5aa6f919fd9bc5461db9d073169f5693.png)
-
-#### SPB PinOut
 
 #### I2C methods
