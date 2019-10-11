@@ -86,6 +86,22 @@ To avoid ESB hazards, a protection could be put over the board thanks to the 4 f
 
 #### I2C methods
 
-|**Function**|ToSend|Returns|
-|:------:|:----:|:-----:|
-|        |      |       |
+See the [MAX30101 Datasheet](https://datasheets.maximintegrated.com/en/ds/MAX30101.pdf)
+
+|**Function**|Adress|Effects|Main Direction|
+|:------:|:----:|:-----:|:-----:|
+| Interrupt enable 1 | 0x02 | Use the bit 7 to 5 to set the interrupt conditions about dataflow | Write |
+| Interrupt enable 2 | 0x03 | Use the bit 1 to set the interrupt condition about die temperature| Write |
+| Interrupt enable 2 | 0x03 | Use the bit 1 to set the interrupt condition about die temperature| Write |
+| FIFO Write Pointer | 0x04 | Last data adress location , bytes 4 to 0 | Read |
+| OF Counter | 0x05 | Overflow counter (if FIFO Full) , bytes 4 to 0 | Read |
+| FIFO Read Pointer | 0x06 | I2C read adress location , bytes 4 to 0 | Read & Write |
+| FIFO Data Register | 0x07 | Pointed data register (not always auto-incremented), 3x1 byte for one channel| Read |
+| FIFO Config| 0x08 | Averaging [7:5] , FIFO RollOver Enable [4] , FIFO status when almost full [3:0] | Read & Write |
+| Mode Config| 0x09 | Shutdown (register keeped and Int==0) [7] , Reset [6] , Measurement Mode [2:0] | Write |
+| SpO2 Config| 0x0A | ADC Range [6:5] , Sample Rate [4:2] , Pulse Width [1:0] | Write |
+| LED 1 Amplitude | 0x0C | 1 full byte (see datasheet) | Write |
+| LED 2 Amplitude | 0x0D | 1 full byte (see datasheet) | Write |
+| Temperature (Int) | 0x1F | 1 full byte (ex : the 12 in 12.5) | Read |
+| Temperature (Fractional) | 0x20 | bit 4 to 0 (ex: the 0.5 in 12.5) | Read |
+| Temperature Config | 0x21 | Use the bit 0 to enable die temperature measurment| Read |
