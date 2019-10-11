@@ -2,13 +2,13 @@
 
 This folder contains the files and studies that have been made to build a prototype design of the wearable device.
 
-1. Follow.ER Goals
-2. Global Architecture
-3. Device Architecture
-4. Device Prototype Goals
-5. Elements
- 5.1 The MCU
- 5.2 The Sensors HUB
++ Follow.ER Goals
++ Global Architecture
++ Device Architecture
++ Device Prototype Goals
++ Elements
+  + The MCU
+  + The Sensors HUB
 
 ## Follow.ER Goals
 
@@ -71,8 +71,6 @@ The simplified board architecture could be displayed as :
 ![SPB_Arch](https://tof.cx/images/2019/10/11/435c2b7e5b95a3bc33b57376aa90a550.png)
 
 #### SPB PinOut
-
-The board pinout :
 
 
 
