@@ -1,0 +1,620 @@
+EESchema Schematic File Version 4
+LIBS:SPB_ProjSante-cache
+EELAYER 30 0
+EELAYER END
+$Descr User 9843 7874
+encoding utf-8
+Sheet 1 1
+Title "Sensor Prototype Board for Projet_Santé"
+Date "2019-09-19"
+Rev ""
+Comp "Go Concept"
+Comment1 "By SKUBICH Jules"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GND #PWR012
+U 1 1 5D838B13
+P 7200 5600
+F 0 "#PWR012" H 7200 5350 50  0001 C CNN
+F 1 "GND" H 7200 5450 50  0000 C CNN
+F 2 "" H 7200 5600 50  0000 C CNN
+F 3 "" H 7200 5600 50  0000 C CNN
+	1    7200 5600
+	0    1    1    0   
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R5
+U 1 1 5D838C65
+P 6400 5050
+F 0 "R5" H 6430 5070 50  0000 L CNN
+F 1 "4.7k" H 6430 5010 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6400 5050 50  0001 C CNN
+F 3 "" H 6400 5050 50  0000 C CNN
+	1    6400 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R6
+U 1 1 5D838D24
+P 6650 5050
+F 0 "R6" H 6680 5070 50  0000 L CNN
+F 1 "4.7k" H 6680 5010 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6650 5050 50  0001 C CNN
+F 3 "" H 6650 5050 50  0000 C CNN
+	1    6650 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R7
+U 1 1 5D838D53
+P 6900 5050
+F 0 "R7" H 6930 5070 50  0000 L CNN
+F 1 "4.7k" H 6930 5010 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6900 5050 50  0001 C CNN
+F 3 "" H 6900 5050 50  0000 C CNN
+	1    6900 5050
+	1    0    0    -1  
+$EndComp
+Text GLabel 7600 5400 0    60   Output ~ 0
+SUPPLY
+Text GLabel 7300 5800 0    60   Input ~ 0
+I_led
+Text GLabel 7600 5700 0    60   Input ~ 0
+I_chip
+Text GLabel 6250 5400 0    60   Output ~ 0
+_INT
+Text GLabel 6000 5300 0    60   Output ~ 0
+SCL
+Text GLabel 5750 5200 0    60   BiDi ~ 0
+SDA
+Text Notes 6400 4300 0    60   ~ 0
+I2C Pull-Up
+$Comp
+L SPB_ProjSante-rescue:LTC6103 U3
+U 1 1 5D839262
+P 5900 2100
+F 0 "U3" H 6000 2950 60  0000 C CNN
+F 1 "LTC6103" H 6600 2700 60  0000 C CNN
+F 2 "Package_SO:TSSOP-8_3x3mm_P0.65mm" H 5900 2100 60  0001 C CNN
+F 3 "" H 5900 2100 60  0001 C CNN
+	1    5900 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 5D839411
+P 5300 1750
+F 0 "#PWR08" H 5300 1500 50  0001 C CNN
+F 1 "GND" H 5300 1600 50  0000 C CNN
+F 2 "" H 5300 1750 50  0000 C CNN
+F 3 "" H 5300 1750 50  0000 C CNN
+	1    5300 1750
+	0    1    1    0   
+$EndComp
+Text GLabel 6150 1250 1    60   Output ~ 0
+I_led
+Text GLabel 5750 1250 1    60   Output ~ 0
+I_chip
+Text GLabel 3650 2550 0    60   Input ~ 0
+SUPPLY
+$Comp
+L power:GND #PWR05
+U 1 1 5D839AE3
+P 4150 3150
+F 0 "#PWR05" H 4150 2900 50  0001 C CNN
+F 1 "GND" H 4150 3000 50  0000 C CNN
+F 2 "" H 4150 3150 50  0000 C CNN
+F 3 "" H 4150 3150 50  0000 C CNN
+	1    4150 3150
+	0    1    1    0   
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small Rs1
+U 1 1 5D839B5A
+P 5950 3050
+F 0 "Rs1" H 5980 3070 50  0000 L CNN
+F 1 "1" H 5980 3010 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5950 3050 50  0001 C CNN
+F 3 "" H 5950 3050 50  0000 C CNN
+	1    5950 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R3
+U 1 1 5D839E4A
+P 6050 2450
+F 0 "R3" H 6080 2470 50  0000 L CNN
+F 1 "100" H 6080 2410 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6050 2450 50  0001 C CNN
+F 3 "" H 6050 2450 50  0000 C CNN
+	1    6050 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R2
+U 1 1 5D839ECA
+P 5800 2850
+F 0 "R2" H 5830 2870 50  0000 L CNN
+F 1 "100" H 5830 2810 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 5800 2850 50  0001 C CNN
+F 3 "" H 5800 2850 50  0000 C CNN
+	1    5800 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR07
+U 1 1 5D83A059
+P 5100 3350
+F 0 "#PWR07" H 5100 3100 50  0001 C CNN
+F 1 "GND" H 5100 3200 50  0000 C CNN
+F 2 "" H 5100 3350 50  0000 C CNN
+F 3 "" H 5100 3350 50  0000 C CNN
+	1    5100 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:C_Small C3
+U 1 1 5D83A11F
+P 3650 3200
+F 0 "C3" H 3660 3270 50  0000 L CNN
+F 1 "4.7u" H 3660 3120 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 3650 3200 50  0001 C CNN
+F 3 "" H 3650 3200 50  0000 C CNN
+	1    3650 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 5D83A660
+P 3650 3350
+F 0 "#PWR04" H 3650 3100 50  0001 C CNN
+F 1 "GND" H 3650 3200 50  0000 C CNN
+F 2 "" H 3650 3350 50  0000 C CNN
+F 3 "" H 3650 3350 50  0000 C CNN
+	1    3650 3350
+	1    0    0    -1  
+$EndComp
+Text GLabel 6600 2650 2    60   Output ~ 0
+AFE_LED
+Text GLabel 6600 3050 2    60   Output ~ 0
+AFE_1.8v
+Wire Wire Line
+	6900 4950 6900 4900
+Wire Wire Line
+	6900 4900 6650 4900
+Wire Wire Line
+	6400 4900 6400 4950
+Wire Wire Line
+	6650 4800 6650 4900
+Connection ~ 6650 4900
+Wire Wire Line
+	5750 5200 6900 5200
+Wire Wire Line
+	6900 5200 6900 5150
+Wire Wire Line
+	6000 5300 6650 5300
+Wire Wire Line
+	6650 5300 6650 5150
+Wire Wire Line
+	6400 5150 6400 5400
+Wire Notes Line
+	6300 4200 6300 5500
+Wire Notes Line
+	6300 5500 7100 5500
+Wire Notes Line
+	7100 5500 7100 4200
+Wire Wire Line
+	5100 3150 5100 3050
+Connection ~ 5100 3050
+Wire Wire Line
+	3750 3050 3750 2950
+Wire Wire Line
+	3750 2550 3650 2550
+Connection ~ 3750 2650
+Wire Wire Line
+	5000 3050 5100 3050
+Wire Wire Line
+	5800 3050 5800 2950
+Wire Wire Line
+	5800 2750 5800 2250
+Wire Wire Line
+	6050 2350 6050 2250
+$Comp
+L SPB_ProjSante-rescue:R_Small Rs2
+U 1 1 5D839D2A
+P 6200 2650
+F 0 "Rs2" H 6230 2670 50  0000 L CNN
+F 1 "1" H 6230 2610 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6200 2650 50  0001 C CNN
+F 3 "" H 6200 2650 50  0000 C CNN
+	1    6200 2650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6600 2650 6350 2650
+Wire Wire Line
+	3750 2650 6050 2650
+Wire Wire Line
+	6050 2650 6050 2550
+Connection ~ 6050 2650
+Connection ~ 5800 3050
+Wire Wire Line
+	6050 3050 6100 3050
+Wire Wire Line
+	6100 3050 6100 2850
+Wire Wire Line
+	6100 2850 5600 2850
+Wire Wire Line
+	5600 2850 5600 2250
+Wire Wire Line
+	6250 2250 6250 2450
+Wire Wire Line
+	6250 2450 6350 2450
+Wire Wire Line
+	6350 2450 6350 2650
+Connection ~ 6350 2650
+Connection ~ 6100 3050
+$Comp
+L SPB_ProjSante-rescue:R_Small R4
+U 1 1 5D83B3A3
+P 6300 1300
+F 0 "R4" H 6330 1320 50  0000 L CNN
+F 1 "200k" H 6330 1260 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6300 1300 50  0001 C CNN
+F 3 "" H 6300 1300 50  0000 C CNN
+	1    6300 1300
+	0    1    1    0   
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:R_Small R1
+U 1 1 5D83B609
+P 5600 1300
+F 0 "R1" H 5630 1320 50  0000 L CNN
+F 1 "200k" H 5630 1260 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 5600 1300 50  0001 C CNN
+F 3 "" H 5600 1300 50  0000 C CNN
+	1    5600 1300
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR09
+U 1 1 5D83B659
+P 5500 1300
+F 0 "#PWR09" H 5500 1050 50  0001 C CNN
+F 1 "GND" H 5500 1150 50  0000 C CNN
+F 2 "" H 5500 1300 50  0000 C CNN
+F 3 "" H 5500 1300 50  0000 C CNN
+	1    5500 1300
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR010
+U 1 1 5D83B68E
+P 6400 1300
+F 0 "#PWR010" H 6400 1050 50  0001 C CNN
+F 1 "GND" H 6400 1150 50  0000 C CNN
+F 2 "" H 6400 1300 50  0000 C CNN
+F 3 "" H 6400 1300 50  0000 C CNN
+	1    6400 1300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6200 1300 6150 1300
+Wire Wire Line
+	6150 1250 6150 1300
+Connection ~ 6150 1300
+Wire Wire Line
+	5750 1350 5750 1300
+Wire Wire Line
+	5750 1300 5700 1300
+Connection ~ 5750 1300
+Text Notes 6500 1800 0    60   ~ 0
+Gain  = 2000 , 1µA == 2mv
+Text Notes 6900 2100 0    60   ~ 0
+Current Sense, 2Chnl
+Wire Notes Line
+	7900 2150 7900 900 
+Wire Notes Line
+	7900 900  4600 900 
+Wire Notes Line
+	4600 900  4600 2250
+Wire Notes Line
+	4600 2250 5450 2250
+Wire Notes Line
+	5450 2250 5450 3250
+Wire Notes Line
+	5450 3250 6550 3250
+Wire Notes Line
+	6550 3250 6550 2150
+Wire Notes Line
+	6550 2150 7900 2150
+Text Notes 4250 3750 0    60   ~ 0
+5v/3.3v to 1.8v
+Wire Notes Line
+	3550 2850 5300 2850
+Wire Notes Line
+	3550 2850 3550 3600
+Wire Notes Line
+	3550 3600 5300 3600
+Wire Notes Line
+	5300 3600 5300 2850
+Text Notes 3800 2600 0    60   ~ 0
+5v/3.3v
+$Comp
+L SPB_ProjSante-rescue:MAX30101 U1
+U 1 1 5D83C27F
+P 3750 4850
+F 0 "U1" H 3750 5700 60  0000 C CNN
+F 1 "MAX30101" H 3750 4450 60  0000 C CNN
+F 2 "ProjetSanté:F134" H 3750 4850 60  0001 C CNN
+F 3 "" H 3750 4850 60  0001 C CNN
+	1    3750 4850
+	-1   0    0    1   
+$EndComp
+Text GLabel 2900 4850 0    60   Input ~ 0
+AFE_LED
+Text GLabel 2000 5100 0    60   Input ~ 0
+AFE_1.8v
+$Comp
+L power:GND #PWR03
+U 1 1 5D83C610
+P 3350 5250
+F 0 "#PWR03" H 3350 5000 50  0001 C CNN
+F 1 "GND" H 3350 5100 50  0000 C CNN
+F 2 "" H 3350 5250 50  0000 C CNN
+F 3 "" H 3350 5250 50  0000 C CNN
+	1    3350 5250
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR06
+U 1 1 5D83C9FC
+P 4200 5100
+F 0 "#PWR06" H 4200 4850 50  0001 C CNN
+F 1 "GND" H 4200 4950 50  0000 C CNN
+F 2 "" H 4200 5100 50  0000 C CNN
+F 3 "" H 4200 5100 50  0000 C CNN
+	1    4200 5100
+	0    -1   -1   0   
+$EndComp
+Text Notes 3350 5900 0    60   ~ 0
+AFE + LED + SENSORS
+Text Notes 850  4300 0    60   ~ 0
+LED GROUND and IC GROUND needs to be separated to be later joined in a star shaped network.
+$Comp
+L SPB_ProjSante-rescue:C_Small C4
+U 1 1 5D83CD07
+P 5100 3250
+F 0 "C4" H 5110 3320 50  0000 L CNN
+F 1 "4.7u" H 5110 3170 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 5100 3250 50  0001 C CNN
+F 3 "" H 5100 3250 50  0000 C CNN
+	1    5100 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:C_Small C1
+U 1 1 5D83CDF9
+P 2150 4900
+F 0 "C1" H 2160 4970 50  0000 L CNN
+F 1 "4.7u" H 2160 4820 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 2150 4900 50  0001 C CNN
+F 3 "" H 2150 4900 50  0000 C CNN
+	1    2150 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPB_ProjSante-rescue:C_Small C2
+U 1 1 5D83D04B
+P 3050 4700
+F 0 "C2" H 3060 4770 50  0000 L CNN
+F 1 "10u" H 3060 4620 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3050 4700 50  0001 C CNN
+F 3 "" H 3050 4700 50  0000 C CNN
+	1    3050 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 5D83D10F
+P 2150 4800
+F 0 "#PWR01" H 2150 4550 50  0001 C CNN
+F 1 "GND" H 2150 4650 50  0000 C CNN
+F 2 "" H 2150 4800 50  0000 C CNN
+F 3 "" H 2150 4800 50  0000 C CNN
+	1    2150 4800
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5D83D14D
+P 3050 4600
+F 0 "#PWR02" H 3050 4350 50  0001 C CNN
+F 1 "GND" H 3050 4450 50  0000 C CNN
+F 2 "" H 3050 4600 50  0000 C CNN
+F 3 "" H 3050 4600 50  0000 C CNN
+	1    3050 4600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2900 4850 3050 4850
+Wire Wire Line
+	3050 4850 3050 4800
+Wire Wire Line
+	3250 4800 3250 4850
+Wire Wire Line
+	3250 4800 3300 4800
+Connection ~ 3050 4850
+Wire Wire Line
+	3250 4950 3300 4950
+Connection ~ 3250 4850
+Wire Wire Line
+	2000 5100 2150 5100
+Wire Wire Line
+	2150 5100 2150 5000
+Connection ~ 2150 5100
+Text GLabel 3350 5400 0    60   Input ~ 0
+_INT
+Text GLabel 4200 5250 2    60   BiDi ~ 0
+SDA
+Text GLabel 4200 5400 2    60   Input ~ 0
+SCL
+Text GLabel 6650 4800 1    60   Input ~ 0
+AFE_1.8v
+Wire Notes Line
+	7100 4200 6300 4200
+Wire Notes Line
+	1350 4350 1350 6000
+Wire Notes Line
+	1350 4350 4550 4350
+Wire Notes Line
+	4550 4350 4550 6000
+Wire Notes Line
+	4550 6000 1350 6000
+$Comp
+L SPB_ProjSante-rescue:TLV70018 U2
+U 1 1 5D888495
+P 4550 3200
+F 0 "U2" H 4550 3450 60  0000 C CNN
+F 1 "TLV70018" H 4600 3050 60  0000 C CNN
+F 2 "Package_SON:WSON-6_1.5x1.5mm_P0.5mm" H 4550 3200 60  0001 C CNN
+F 3 "" H 4550 3200 60  0001 C CNN
+	1    4550 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3250 3950 3250
+Wire Wire Line
+	6650 4900 6400 4900
+Wire Wire Line
+	6650 4900 6650 4950
+Wire Wire Line
+	5100 3050 5800 3050
+Wire Wire Line
+	3750 2650 3750 2550
+Wire Wire Line
+	6050 2650 6100 2650
+Wire Wire Line
+	5800 3050 5850 3050
+Wire Wire Line
+	6350 2650 6300 2650
+Wire Wire Line
+	6100 3050 6600 3050
+Wire Wire Line
+	6150 1300 6150 1350
+Wire Wire Line
+	5750 1300 5750 1250
+Wire Wire Line
+	3050 4850 3250 4850
+Wire Wire Line
+	3250 4850 3250 4950
+Wire Wire Line
+	2150 5100 3350 5100
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5D88A9C7
+P 8200 3600
+F 0 "#FLG0101" H 8200 3675 50  0001 C CNN
+F 1 "PWR_FLAG" H 8200 3773 50  0000 C CNN
+F 2 "" H 8200 3600 50  0001 C CNN
+F 3 "~" H 8200 3600 50  0001 C CNN
+	1    8200 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 5D88BE61
+P 8200 3600
+F 0 "#PWR0101" H 8200 3350 50  0001 C CNN
+F 1 "GND" H 8205 3427 50  0000 C CNN
+F 2 "" H 8200 3600 50  0001 C CNN
+F 3 "" H 8200 3600 50  0001 C CNN
+	1    8200 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 5400 7600 5400
+Wire Wire Line
+	7150 5200 7150 5400
+Wire Wire Line
+	6250 5400 6400 5400
+Wire Wire Line
+	7150 5200 7800 5200
+Connection ~ 6400 5400
+Wire Wire Line
+	6400 5400 7150 5400
+Wire Wire Line
+	7800 5100 7100 5100
+Wire Wire Line
+	7100 5100 7100 5300
+Wire Wire Line
+	7100 5300 6650 5300
+Connection ~ 6650 5300
+Wire Wire Line
+	6900 5200 7050 5200
+Wire Wire Line
+	7050 5200 7050 5000
+Wire Wire Line
+	7050 5000 7800 5000
+Connection ~ 6900 5200
+$Comp
+L Device:Jumper_NO_Small JP1
+U 1 1 5D8A14E3
+P 3950 3150
+F 0 "JP1" V 3950 3300 50  0000 R CNN
+F 1 "." V 3900 3200 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 3950 3150 50  0001 C CNN
+F 3 "~" H 3950 3150 50  0001 C CNN
+	1    3950 3150
+	0    -1   -1   0   
+$EndComp
+Connection ~ 3950 3050
+Wire Wire Line
+	3950 3050 4150 3050
+Wire Wire Line
+	3650 3350 3650 3300
+Wire Wire Line
+	3650 2950 3750 2950
+Connection ~ 3750 2950
+Wire Wire Line
+	3750 2950 3750 2650
+Wire Wire Line
+	3650 2950 3650 3100
+Wire Wire Line
+	3750 3050 3950 3050
+$Comp
+L Connector:Conn_01x09_Male J1
+U 1 1 5D8A96A0
+P 8000 5400
+F 0 "J1" H 7972 5424 50  0000 R CNN
+F 1 "Conn_01x09_Male" H 7972 5333 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical" H 8000 5400 50  0001 C CNN
+F 3 "~" H 8000 5400 50  0001 C CNN
+	1    8000 5400
+	-1   0    0    -1  
+$EndComp
+Text GLabel 7650 5500 0    60   Input ~ 0
+AFE_1.8v
+$Comp
+L power:GND #PWR011
+U 1 1 5D838AFE
+P 7800 5300
+F 0 "#PWR011" H 7800 5050 50  0001 C CNN
+F 1 "GND" H 7800 5150 50  0000 C CNN
+F 2 "" H 7800 5300 50  0000 C CNN
+F 3 "" H 7800 5300 50  0000 C CNN
+	1    7800 5300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7200 5600 7800 5600
+Wire Wire Line
+	7600 5700 7800 5700
+Wire Wire Line
+	7800 5800 7300 5800
+Wire Wire Line
+	7800 5500 7650 5500
+$EndSCHEMATC
