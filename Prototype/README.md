@@ -56,6 +56,8 @@ The Feather nRF52 Bluefruit LE , from Adafruit Industires have been choosen beca
 
 #### Board PinOut
 
+The board PinOut can be found [HERE](https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/device-pinout)
+
 #### Protoype Code Architecure
 
 ### The Sensors HUB => Sensor Prototype Board (SPB)
