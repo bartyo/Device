@@ -4,7 +4,7 @@
 
 Trying to make the Adafruit nRF52 work / Check the SPB solders
 
----
+## Summary
 
 This folder contains the files and studies that have been made to build a prototype design of the wearable device.
 
