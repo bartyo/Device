@@ -65,6 +65,23 @@ The board PinOut can be found [HERE](https://learn.adafruit.com/bluefruit-nrf52-
 
 #### Protoype Code Architecure
 
+The Prototype Code is based on a "TOKEN" system.
+
+The user, via BLE or UART will send a 3 letters TOKEN that will tell the MCU the action to perform.
+For exemple, ``BLK`` will cause the built-in red led to blink 5 time for 2,5s (a token table is indicated in the code and later in the docs).
+
+That system allow an user to simply test methods and functions thanks to single instructions. Consequently, the softawre is constantly waiting for new tokens to follow. 
+
+If a wrong token or an other situation trigger an error (variable ``done`` == ``false`` ), the system will send a message trough the selected communication protocol and set the token as ``NOP`` (do nothing) so user action can block the MCU.
+
+Here's the architecture :
+
+![AdaCode](http://tof.cx/images/2019/10/22/fe09e5bb2c7ae3c6ccda95db9db1996c.png)
+
+And here's the TOKEN table :
+
+
+
 ### The Sensors HUB => Sensor Prototype Board (SPB)
 
 To allow us to prototype with oximetry measurement, **we've built a Sensors Prototype Board** that gather **oximetry signal** by **reflectance method**. The chip is also able to send **die temperature measurements**.
