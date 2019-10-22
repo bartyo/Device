@@ -1,8 +1,7 @@
 # Prototype
 
 ## Current Status
-
-Trying to make the Adafruit nRF52 work / Check the SPB solders
+Building the Adafruit nRF52 base code / Check the SPB solders
 
 ## Summary
 
