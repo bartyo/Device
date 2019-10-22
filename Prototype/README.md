@@ -78,7 +78,7 @@ Here's the architecture :
 
 ![AdaCode](http://tof.cx/images/2019/10/22/fe09e5bb2c7ae3c6ccda95db9db1996c.png)
 
-And here's the TOKEN table :
+And here's the ***current*** TOKEN table (add new one if needed):
 
 |TOKEN|Action|Need to send opt. Data ?|
 |:--:|:--:|:--:|
