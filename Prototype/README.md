@@ -80,7 +80,26 @@ Here's the architecture :
 
 And here's the TOKEN table :
 
+|TOKEN|Action|Need to send opt. Data ?|
+|:--:|:--:|:--:|
+|``NOP``|Do nothing| No |
+|``ERR``|Raise an error (test func)| No |
+|``BLK``|Do nothing| No |
+|``OXI``|Gather Oximetry Data (single)| No |
+|``OXB``|Gather Oximetry Data (buffered)| No |
+|``TMP``|Gather Die Temperature| No |
+|``LRD``|Gather RED absorption| No |
+|``LIR``|Gather INFARED absorption| No |
+|``LGR``|Gather GREEN absorption| No |
+|``MOD``|Switch the communication mode (BLE/UART)| No |
+|``HWP``|Switch the hardawre interaction mode (SIMULATED/GPIOs)| No |
+|``PTS``|Set the number of point to gather in buffered mode| Yes (16bit HEXA, ex: AF55)|
+|``SMP``|Set the chip sampling frequency| Yes (8bit HEXA, ex: F5)|
+|``AMP``|Set the chip gain| Yes (8bit HEXA, ex: 08)|
+|``PUL``|Set the chip pulse width| Yes (8bit HEXA, ex: A3)|
+|``INT``|Set the chip/led current consumtpion| Yes (8bit HEXA, ex: 30)|
 
+> For the Hexa values, look at the MAX30101 datasheet :) (the soft should take care of the rest)
 
 ### The Sensors HUB => Sensor Prototype Board (SPB)
 
