@@ -97,7 +97,7 @@ And here's the ***current*** TOKEN table (add new one if needed):
 |``SMP``|Set the chip sampling frequency| Yes (8bit HEXA, ex: F5)|
 |``AMP``|Set the chip gain| Yes (8bit HEXA, ex: 08)|
 |``PUL``|Set the chip pulse width| Yes (8bit HEXA, ex: A3)|
-|``INT``|Set the chip/led current consumtpion| Yes (8bit HEXA, ex: 30)|
+|``INT``|Set the chip/led current consumption| Yes (8bit HEXA, ex: 30)|
 
 > For the Hexa values, look at the MAX30101 datasheet :) (the soft should take care of the rest)
 
@@ -134,7 +134,6 @@ See the [MAX30101 Datasheet](https://datasheets.maximintegrated.com/en/ds/MAX301
 |**Function**|Adress|Effects|Main Direction|
 |:------:|:----:|:-----:|:-----:|
 | Interrupt enable 1 | 0x02 | Use the bit 7 to 5 to set the interrupt conditions about dataflow | Write |
-| Interrupt enable 2 | 0x03 | Use the bit 1 to set the interrupt condition about die temperature| Write |
 | Interrupt enable 2 | 0x03 | Use the bit 1 to set the interrupt condition about die temperature| Write |
 | FIFO Write Pointer | 0x04 | Last data adress location , bytes 4 to 0 | Read |
 | OF Counter | 0x05 | Overflow counter (if FIFO Full) , bytes 4 to 0 | Read |
