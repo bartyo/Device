@@ -95,7 +95,7 @@ And here's the ***current*** TOKEN table (add new one if needed):
 |``HWP``|Switch the hardawre interaction mode (SIMULATED/GPIOs)| No |
 |``PTS``|Set the number of point to gather in buffered mode| Yes (16bit HEXA, ex: AF55)|
 |``SMP``|Set the chip sampling frequency| Yes (8bit HEXA, ex: F5)|
-|``AMP``|Set the chip gain| Yes (8bit HEXA, ex: 08)|
+|``AMP``|Set the chip range| Yes (8bit HEXA, ex: 08)|
 |``PUL``|Set the chip pulse width| Yes (8bit HEXA, ex: A3)|
 |``INT``|Set the chip/led current consumption| Yes (8bit HEXA, ex: 30)|
 
