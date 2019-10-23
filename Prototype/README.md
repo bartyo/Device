@@ -63,6 +63,8 @@ The Feather nRF52 Bluefruit LE , from Adafruit Industires have been choosen beca
 
 The board PinOut can be found [HERE](https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/device-pinout)
 
+> The pin attributions could be found into the code and can be easily changed.
+
 #### Protoype Code Architecure
 
 The Prototype Code is based on a "TOKEN" system.
