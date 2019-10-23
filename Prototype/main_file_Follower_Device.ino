@@ -219,7 +219,7 @@ boolean TokenAction(void){
 
  else if(TOKEN == "PTS"){
      Read_Payload();                        //After the TOKEN is received, wait for more Serial data. The received Serial data will be the value to attribute (so ASCII Values needed)
-     OXI_SET.nb_pts = (int)BLE_Payload;     // Byte array to Integer, then attributed to corresponding OXI_SET parameter
+     OXI_SET.nb_pts = (int)BLE_Payload;     // Byte array to Integer, then attributed to corresponding OXI_SET parameter /!\ SEE GITHUB ISSUE /!\
      OXI_SETTINGS_UART();                   // Display the structure if UART Enabbled to check if something changed the wrong way.
      done = true;                           // Token recognised
  }
