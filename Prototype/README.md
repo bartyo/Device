@@ -88,9 +88,6 @@ And here's the ***current*** TOKEN table (add new one if needed):
 |``OXI``|Gather Oximetry Data (single)| No |
 |``OXB``|Gather Oximetry Data (buffered)| No |
 |``TMP``|Gather Die Temperature| No |
-|``LRD``|Gather RED absorption| No |
-|``LIR``|Gather INFARED absorption| No |
-|``LGR``|Gather GREEN absorption| No |
 |``MOD``|Switch the communication mode (BLE/UART)| No |
 |``HWP``|Switch the hardawre interaction mode (SIMULATED/GPIOs)| No |
 |``PTS``|Set the number of point to gather in buffered mode| Yes (16bit HEXA, ex: AF55)|
