@@ -98,6 +98,10 @@ And here's the ***current*** TOKEN table (add new one if needed):
 
 > For the Hexa values, look at the MAX30101 datasheet :) (the soft should take care of the rest)
 
+An exemple of UART prototyping control:
+
+![UARTDrive](https://tof.cx/images/2019/10/23/3751e84dc0c2d9db4eebcbf9037de9b9.png)
+
 ### The Sensors HUB => Sensor Prototype Board (SPB)
 
 To allow us to prototype with oximetry measurement, **we've built a Sensors Prototype Board** that gather **oximetry signal** by **reflectance method**. The chip is also able to send **die temperature measurements**.
