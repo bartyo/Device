@@ -54,6 +54,10 @@ boolean HWMode = false;               // Hardware Interaction protocol (false ==
 String TOKEN = "NOP";                 // Token buffer
 byte BLE_Payload[20] = { 0 };         // BLE payload to send
 
+#define MAX_SIZE   4000              //Maximum accepted samples value (need < 16bit)
+#define SAMPLES     6
+byte Data_Buffer[MAX_SIZE][SAMPLES] = { 0 };  // Max 4000 samples made of 6 bytes - Buffer for buffered oximetry mode
+
 struct I2C_PACK {
   byte adress;        //I2C adress
   byte load;       //I2C buffer to send/read data
@@ -68,8 +72,8 @@ struct OXI_SETTING {
   byte intensity;
 };
 
-I2C_PACK      I2C_COM = {0x00,0x00,false};                // Global I2C structure
-OXI_SETTING   OXI_SET = {600,50,4,118,1};                  // Global Oximetry Settings structure
+I2C_PACK      I2C_COM = {0x00,0x00,false};                        // Global I2C structure
+OXI_SETTING   OXI_SET = {{0x00,0x32},0x0,0x1,0x1,0x3F};           // Global Oximetry Settings structure
 
 /* #################################################################### */
 
@@ -82,6 +86,7 @@ OXI_SETTING   OXI_SET = {600,50,4,118,1};                  // Global Oximetry Se
 //  TMP -> Gather Die Temperature
 //  MOD -> Switch the COM mode
 //  HWP -> Switch the Hardware Interaction mode
+//  STR -> See the Oximetry Structure Variable (UART Only, for now)
 //  PTS -> Set number of point (buffered)
 //  SMP -> Set sampling freq.
 //  AMP -> Set chip range
@@ -122,7 +127,7 @@ void Read_Payload(void){
   else{
     /* read trough UART */
     while (Serial.available() == 0) {}                            // Wait until data comes
-    (Serial.readString()).toCharArray((char*)BLE_Payload,20);     // Read serial datas as a string, then transform it as a char array, then put it into the Byte Payload; 
+    (Serial.readString()).getBytes(BLE_Payload,20);               // Read serial datas as a string, then transform it as a char array, then put it into the Byte Payload; 
     Serial.flush();                                               // Clean the COM
   }
 }
@@ -171,7 +176,7 @@ void I2C_interact(byte A,byte B,boolean w){
 /* ------------------------------------------------------------------- */
 /* Displays OXI_SET structure if UART Mode is ON (ComMode = false) */
 void OXI_SETTINGS_UART(void){
-  if(ComMode==false){Serial.printf("nb_pts : %02x\nSampling frequency : %02x\nRange : %02x\nPulse Width : %02x\nIntensity : %02x\n",OXI_SET.nb_pts,OXI_SET.sampling_freq,OXI_SET.range,OXI_SET.pulse_width,OXI_SET.intensity);}
+  if(ComMode==false){Serial.printf("nb_pts : Ox%02x%02x\nSampling frequency Index: Ox%02x\nRange Index: Ox%02x\nPulse Width Index: Ox%02x\nIntensity : Ox%02x\n",OXI_SET.nb_pts[0],OXI_SET.nb_pts[1],OXI_SET.sampling_freq,OXI_SET.range,OXI_SET.pulse_width,OXI_SET.intensity);}
 }
 /* ------------------------------------------------------------------- */
 /* Send an error message if TokenAction or other events returns false */
@@ -222,7 +227,9 @@ boolean TokenAction(void){
  }
 
  else if(TOKEN == "OXB"){
-     /* to do */
+
+     /*toDo*/
+     /*need interrupt function and nb_pts conversion*/
      done = true;                           // Token recognised
  }
 
@@ -251,25 +258,30 @@ boolean TokenAction(void){
  /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
  /* In UART Mode, the value you need to send are CHAR with the DESIRED HEXA VALUE (Ex: "!" == 0x23 == 33). For SMP,PUL,AMP the CHAR == HEXA VALUE (Ex : "5" == 0x05) */
  
+ else if(TOKEN == "STR"){
+    OXI_SETTINGS_UART();
+    done = true;                            // Token recognised
+ }
+ 
  else if(TOKEN == "PTS"){
-     Read_Payload();                        //After the TOKEN is received, wait for more Serial data. 
-     OXI_SET.nb_pts[0] = BLE_Payload[0];    // Byte array to define the number of point to gather in buffered mode.
-     OXI_SET.nb_pts[1] = BLE_Payload[1];
-     OXI_SETTINGS_UART();                   // Display the structure if UART Enabbled to check if something changed the wrong way.
-     done = true;                           // Token recognised
+     Read_Payload();                                                  //After the TOKEN is received, wait for more Serial data. 
+     OXI_SET.nb_pts[0] = (int)BLE_Payload[0]%(MAX_SIZE>>8);          // Byte array to define the number of point to gather in buffered mode.
+     OXI_SET.nb_pts[1] = (int)BLE_Payload[1]%(MAX_SIZE&0x00FF);      // Modulo Low and High Byte of MAX_SIZE to clamp the values
+     OXI_SETTINGS_UART();                                             // Display the structure if UART Enabbled to check if something changed the wrong way.
+     done = true;                                                     // Token recognised
  }
 
  else if(TOKEN == "SMP"){
      byte register_status = 0x00;
      
      Read_Payload();
-     OXI_SET.sampling_freq = BLE_Payload[0];                                                       //See datasheet (low value bytes)
+     OXI_SET.sampling_freq = B00000111&BLE_Payload[0];                                             //See datasheet (low value bytes)
      OXI_SETTINGS_UART();
      
      I2C_interact(SPO2_CONFIG,0x00,false);                                                         //Gather the actual register content
      register_status = I2C_COM.load;
      
-     I2C_interact(SPO2_CONFIG,((B00000111&OXI_SET.sampling_freq) << 2)|register_status,true);     //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
+     I2C_interact(SPO2_CONFIG,(OXI_SET.sampling_freq << 2)|register_status,true);      //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
      
      done = true;                                                                                  // Token recognised
  }
@@ -278,13 +290,13 @@ boolean TokenAction(void){
     byte register_status = 0x00;
     
      Read_Payload();
-     OXI_SET.range = BLE_Payload[0];                                                       //See datasheet (low value bytes)
+     OXI_SET.range = B00000011&BLE_Payload[0];                                             //See datasheet (low value bytes)
      OXI_SETTINGS_UART();
      
      I2C_interact(SPO2_CONFIG,0x00,false);                                                 //Gather the actual register content
      register_status = I2C_COM.load;
      
-     I2C_interact(SPO2_CONFIG,((B00000011&OXI_SET.range) << 5)|register_status,true);      //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
+     I2C_interact(SPO2_CONFIG,(OXI_SET.range << 5)|register_status,true);      //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
 
      done = true;                                                                          // Token recognised
  }
@@ -293,13 +305,13 @@ boolean TokenAction(void){
      byte register_status = 0x00;
      
      Read_Payload();
-     OXI_SET.pulse_width = BLE_Payload[0];                                                //See datasheet (low value bytes)
+     OXI_SET.pulse_width = B00000011&BLE_Payload[0];                                      //See datasheet (low value bytes)
      OXI_SETTINGS_UART();
      
      I2C_interact(SPO2_CONFIG,0x00,false);                                                //Gather the actual register content
      register_status = I2C_COM.load;
      
-     I2C_interact(SPO2_CONFIG,(B00000011&OXI_SET.pulse_width)|register_status,true);      //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
+     I2C_interact(SPO2_CONFIG,OXI_SET.pulse_width|register_status,true);      //Modify only the targeted part of the register without changing the rest. Mask for the UART Mode ("3" to 0x03)
 
      done = true;                                                                         // Token recognised
  }
@@ -361,7 +373,7 @@ void setup() {
 void loop() {
   /* UART MAIN Version */
   while (Serial.available() > 0) {
-    Read_Token();                // Read Token (from UART or BLE)
-    Send_Error(TokenAction());  // Call functions designatd by the Token. Raise an error if needed.
+    Read_Token();                 // Read Token (from UART or BLE)
+    Send_Error(TokenAction());    // Call functions designatd by the Token. Raise an error if needed.
   } 
 }
